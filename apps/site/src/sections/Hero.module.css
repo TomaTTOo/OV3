@@ -1,0 +1,52 @@
+.hero {
+  position: relative;
+  min-height: var(--ov-hero-height);
+  padding: var(--ov-header-space) 0 var(--ov-space-8);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cube {
+  position: absolute;
+  inset: 0;
+}
+
+.content {
+  composes: centeredStack from '../ui/patterns.module.css';
+  position: relative;
+  z-index: 1;
+  max-width: var(--ov-hero-text-width);
+  padding: 0 var(--ov-space-5);
+}
+
+.content::before {
+  content: '';
+  position: absolute;
+  inset: calc(var(--ov-space-8) * -1) calc(var(--ov-space-10) * -1);
+  z-index: -1;
+  background: radial-gradient(closest-side, var(--ov-color-halo), transparent);
+}
+
+.title {
+  font-size: var(--ov-font-size-hero);
+  line-height: var(--ov-line-height-tight);
+  font-weight: var(--ov-font-weight-semibold);
+  letter-spacing: var(--ov-letter-spacing-display);
+  color: var(--ov-color-text-strong);
+}
+
+.lead {
+  max-width: var(--ov-text-width);
+  font-size: var(--ov-font-size-lead);
+  font-weight: var(--ov-font-weight-light);
+  color: var(--ov-color-text-muted);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--ov-space-3);
+}

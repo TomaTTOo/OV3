@@ -1,0 +1,29 @@
+.pill {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--ov-control-min-height);
+  padding: var(--ov-space-3) var(--ov-space-6);
+  border-radius: var(--ov-radius-pill);
+  border: var(--ov-border-width) solid transparent;
+  font-weight: var(--ov-font-weight-semibold);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.light,
+.light:hover {
+  background: var(--ov-color-surface-light);
+  color: var(--ov-color-ground);
+}
+
+.outline,
+.outline:hover {
+  border-color: var(--ov-color-line-control);
+  color: var(--ov-color-surface-light);
+}
+
+.dark,
+.dark:hover {
+  background: var(--ov-color-ground);
+  color: var(--ov-color-text-strong);
+}

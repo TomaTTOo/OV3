@@ -1,0 +1,96 @@
+/*
+ * The website's design tokens: every visual value, defined once (docs/ui-guidelines.md § 8).
+ * Components use only these variables; Stylelint refuses raw values.
+ * Colours are Atlassian's dark-mode palette, so the site sits well beside Jira screenshots.
+ */
+:root {
+  /* Ground and surfaces */
+  --ov-color-ground: #0b0d10;
+  --ov-color-surface: #101318;
+  --ov-color-surface-light: #f7f8f9;
+  --ov-color-line: #22272b;
+  --ov-color-line-strong: #2c333a;
+  --ov-color-line-control: #454f59;
+  --ov-color-line-light: #dcdfe4;
+
+  /* Text */
+  --ov-color-text-strong: #fff;
+  --ov-color-text: #dee4ea;
+  --ov-color-text-muted: #b6c2cf;
+  --ov-color-text-subtle: #9fadbc;
+  --ov-color-text-faint: #738496;
+  --ov-color-text-on-light: #1d2125;
+  --ov-color-text-on-light-muted: #44546f;
+
+  /* Meaning: blue = capacity and action, red = over capacity only */
+  --ov-color-capacity: #579dff;
+  --ov-color-capacity-strong: #1d7afc;
+  --ov-color-capacity-text: #85b8ff;
+  --ov-color-capacity-text-hover: #cce0ff;
+  --ov-color-on-capacity: #e9f2ff;
+  --ov-color-over: #f87168;
+  --ov-color-over-on-light: #c9372c;
+  --ov-color-halo: color-mix(in srgb, var(--ov-color-ground) 72%, transparent);
+
+  /* Type */
+  --ov-font-body: 'Sora', system-ui, sans-serif;
+  --ov-font-wordmark: 'Syncopate', sans-serif;
+  --ov-font-size-label: 0.8125rem;
+  --ov-font-size-small: 0.875rem;
+  --ov-font-size-body: 1.125rem;
+  --ov-font-size-lead: 1.25rem;
+  --ov-font-size-item: 1.375rem;
+  --ov-font-size-title: 2rem;
+  --ov-font-size-section: clamp(2rem, 4vw, 3rem);
+  --ov-font-size-statement: clamp(2rem, 5vw, 3.5rem);
+  --ov-font-size-hero: clamp(2.5rem, 7vw, 4.5rem);
+  --ov-font-size-figure: clamp(4rem, 9vw, 6rem);
+  --ov-font-weight-light: 300;
+  --ov-font-weight-regular: 400;
+  --ov-font-weight-semibold: 600;
+  --ov-font-weight-bold: 700;
+  --ov-line-height-tight: 1.04;
+  --ov-line-height-heading: 1.15;
+  --ov-line-height-body: 1.6;
+  --ov-letter-spacing-tight: -0.02em;
+  --ov-letter-spacing-display: -0.03em;
+  --ov-letter-spacing-wordmark: 0.08em;
+  --ov-letter-spacing-label: 0.24em;
+
+  /* Space */
+  --ov-space-1: 0.25rem;
+  --ov-space-2: 0.5rem;
+  --ov-space-3: 0.75rem;
+  --ov-space-4: 1rem;
+  --ov-space-5: 1.5rem;
+  --ov-space-6: 2rem;
+  --ov-space-7: 2.5rem;
+  --ov-space-8: 3rem;
+  --ov-space-9: 3.5rem;
+  --ov-space-10: 4.5rem;
+  --ov-space-section: clamp(5rem, 10vw, 8.75rem);
+  --ov-space-page: clamp(1.5rem, 4vw, 3rem);
+
+  /* Shape and size */
+  --ov-radius-pill: 999px;
+  --ov-radius-panel: 1.25rem;
+  --ov-border-width: 1px;
+  --ov-border-width-strong: 2px;
+  --ov-control-min-height: 2.75rem;
+  --ov-content-width: 68.75rem;
+  --ov-content-width-wide: 81rem;
+  --ov-text-width: 42.5rem;
+  --ov-hero-text-width: 56.25rem;
+  --ov-column-min: 18.75rem;
+  --ov-column-min-wide: 32.5rem;
+  --ov-chart-width: 46rem;
+  --ov-hero-height: 47rem;
+  --ov-header-space: 7rem;
+  --ov-cube-height: 38.75rem;
+  --ov-logo-width: 4.75rem;
+  --ov-logo-height: 2.25rem;
+  --ov-swatch: 0.625rem;
+
+  /* Motion */
+  --ov-motion-fade: 600ms;
+}

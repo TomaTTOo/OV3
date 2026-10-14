@@ -1,0 +1,484 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Outcome Vault - Pro Logo Generator</title>
+    <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@700&display=swap" rel="stylesheet" />
+    <style>
+      :root {
+        --ui-bg: rgba(20, 22, 28, 0.98);
+        --ui-border: rgba(255, 255, 255, 0.12);
+        --accent-btn: #009688;
+        --font-main: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      }
+
+      body {
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        background-color: #1a1e26;
+        font-family: var(--font-main);
+        color: white;
+        padding-bottom: 200px;
+      }
+
+      #logoContainer {
+        box-shadow: 0 40px 120px rgba(0, 0, 0, 0.8);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+        border-radius: 12px;
+        opacity: 0;
+        transition:
+          opacity 0.4s ease,
+          width 0.3s ease,
+          height 0.3s ease;
+      }
+
+      svg {
+        width: 100%;
+        height: 100%;
+      }
+
+      .controls {
+        position: fixed;
+        bottom: 30px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 94vw;
+        max-width: 1150px;
+        background: var(--ui-bg);
+        backdrop-filter: blur(40px);
+        border: 1px solid var(--ui-border);
+        border-radius: 24px;
+        padding: 24px 30px;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 20px;
+        z-index: 1000;
+      }
+
+      .category {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .category-title {
+        font-size: 10px;
+        font-weight: 900;
+        text-transform: uppercase;
+        letter-spacing: 2.5px;
+        color: rgba(255, 255, 255, 0.25);
+        margin-bottom: 6px;
+      }
+
+      .input-row {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .label-text {
+        font-size: 11px;
+        font-weight: 600;
+        color: rgba(255, 255, 255, 0.7);
+      }
+
+      input[type='color'] {
+        -webkit-appearance: none;
+        border: 1.5px solid #ffffff;
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+        cursor: pointer;
+        background: none;
+        padding: 0;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+        transition: transform 0.1s;
+      }
+      input[type='color']:active {
+        transform: scale(0.9);
+      }
+      input[type='color']::-webkit-color-swatch-rectangle {
+        border: none;
+      }
+      input[type='color']::-webkit-color-swatch {
+        border: none;
+        border-radius: 50%;
+      }
+
+      input[type='number'] {
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid var(--ui-border);
+        border-radius: 6px;
+        color: white;
+        padding: 6px 10px;
+        font-size: 13px;
+        width: 55px;
+        outline: none;
+      }
+
+      .switch {
+        position: relative;
+        display: inline-block;
+        width: 36px;
+        height: 20px;
+      }
+      .switch input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+      }
+      .slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(255, 255, 255, 0.15);
+        transition: 0.3s;
+        border-radius: 20px;
+      }
+      .slider:before {
+        position: absolute;
+        content: '';
+        height: 14px;
+        width: 14px;
+        left: 3px;
+        bottom: 3px;
+        background-color: white;
+        transition: 0.3s;
+        border-radius: 50%;
+      }
+      input:checked + .slider {
+        background-color: var(--accent-btn);
+      }
+      input:checked + .slider:before {
+        transform: translateX(16px);
+      }
+
+      .btn-group {
+        display: flex;
+        gap: 8px;
+      }
+      .theme-btn {
+        padding: 10px 20px;
+        font-size: 11px;
+        font-weight: 800;
+        border: 1px solid var(--ui-border);
+        background: rgba(255, 255, 255, 0.04);
+        color: white;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: all 0.2s;
+      }
+      .theme-btn.active {
+        background: white;
+        color: #12141a;
+        border-color: white;
+        box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2);
+      }
+
+      .export-group {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        min-width: 170px;
+      }
+      .action-btn {
+        background: var(--accent-btn);
+        color: white;
+        border: none;
+        padding: 14px;
+        border-radius: 12px;
+        font-size: 11px;
+        font-weight: 900;
+        text-transform: uppercase;
+        cursor: pointer;
+        letter-spacing: 0.5px;
+      }
+      .action-btn.secondary {
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid var(--ui-border);
+      }
+
+      #exportCanvas {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="logoContainer" style="width: 1024px; height: 700px">
+      <svg
+        id="logoSvg"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 460 320"
+        preserveAspectRatio="xMidYMid meet"
+      >
+        <rect
+          id="oShape"
+          x="55"
+          y="65"
+          width="160"
+          height="100"
+          rx="50"
+          fill="none"
+          stroke="#111827"
+          stroke-width="18"
+        />
+        <path
+          id="vShape"
+          d="M 245 65 L 322.5 165 L 400 65"
+          fill="none"
+          stroke="#111827"
+          stroke-width="18"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+        <rect id="dotShape" x="387" y="152" width="22" height="22" rx="4" fill="#eac448" />
+        <line
+          id="lineShape"
+          x1="48.5"
+          y1="210"
+          x2="411.5"
+          y2="210"
+          stroke="#eac448"
+          stroke-width="6"
+          stroke-linecap="round"
+        />
+
+        <text
+          id="logoText"
+          x="230"
+          y="246"
+          font-family="'Syncopate', sans-serif"
+          font-weight="700"
+          fill="#111827"
+          dominant-baseline="hanging"
+          text-anchor="middle"
+          font-size="32"
+        >
+          OUTCOME VAULT
+        </text>
+      </svg>
+    </div>
+
+    <div class="controls">
+      <div class="category">
+        <div class="category-title">Canvas</div>
+        <div class="input-row">
+          <span class="label-text">W</span>
+          <input type="number" id="wIn" value="1024" />
+          <span class="label-text">H</span>
+          <input type="number" id="hIn" value="700" />
+        </div>
+        <div class="input-row">
+          <span class="label-text">BG</span>
+          <input type="color" id="bgCol" value="#ffffff" />
+        </div>
+      </div>
+
+      <div class="category">
+        <div class="category-title">Typography</div>
+        <div class="input-row">
+          <span class="label-text">Text</span>
+          <label class="switch">
+            <input type="checkbox" id="showText" checked />
+            <span class="slider"></span>
+          </label>
+        </div>
+        <div class="input-row">
+          <span class="label-text">Size</span>
+          <input type="number" id="sizeInput" value="32" />
+          <input type="color" id="textCol" value="#111827" />
+        </div>
+      </div>
+
+      <div class="category">
+        <div class="category-title">Accents</div>
+        <div class="input-row">
+          <span class="label-text">Color</span>
+          <input type="color" id="accentCol" value="#eac448" />
+        </div>
+      </div>
+
+      <div class="category">
+        <div class="category-title">Theme Preset</div>
+        <div class="btn-group">
+          <button class="theme-btn active" id="themeLight">LIGHT</button>
+          <button class="theme-btn" id="themeDark">DARK</button>
+        </div>
+      </div>
+
+      <div class="export-group">
+        <div class="category-title">Exports</div>
+        <button id="exportBtn" class="action-btn">Export PNG</button>
+        <button id="exportSvgBtn" class="action-btn secondary">Copy SVG Code</button>
+      </div>
+    </div>
+
+    <canvas id="exportCanvas"></canvas>
+
+    <script>
+      const container = document.getElementById('logoContainer');
+      const svg = document.getElementById('logoSvg');
+      const logoText = document.getElementById('logoText');
+      const showText = document.getElementById('showText');
+
+      const controls = {
+        size: document.getElementById('sizeInput'),
+        w: document.getElementById('wIn'),
+        h: document.getElementById('hIn'),
+        textCol: document.getElementById('textCol'),
+        accentCol: document.getElementById('accentCol'),
+        bgCol: document.getElementById('bgCol'),
+      };
+
+      const updateVisuals = () => {
+        const tColor = controls.textCol.value;
+        const aColor = controls.accentCol.value;
+        const bColor = controls.bgCol.value;
+
+        container.style.backgroundColor = bColor;
+        logoText.setAttribute('fill', tColor);
+        logoText.setAttribute('font-size', controls.size.value);
+
+        if (showText.checked) {
+          logoText.style.display = 'block';
+          svg.setAttribute('viewBox', '0 0 460 320');
+        } else {
+          logoText.style.display = 'none';
+          svg.setAttribute('viewBox', '0 30 460 218');
+        }
+
+        document.getElementById('oShape').setAttribute('stroke', tColor);
+        document.getElementById('vShape').setAttribute('stroke', tColor);
+        document.getElementById('dotShape').setAttribute('fill', aColor);
+        document.getElementById('lineShape').setAttribute('stroke', aColor);
+
+        container.style.width = controls.w.value + 'px';
+        container.style.height = controls.h.value + 'px';
+      };
+
+      document.getElementById('themeLight').onclick = function () {
+        controls.bgCol.value = '#ffffff';
+        controls.textCol.value = '#111827';
+        this.classList.add('active');
+        document.getElementById('themeDark').classList.remove('active');
+        updateVisuals();
+      };
+
+      document.getElementById('themeDark').onclick = function () {
+        controls.bgCol.value = '#111827';
+        controls.textCol.value = '#ffffff';
+        this.classList.add('active');
+        document.getElementById('themeLight').classList.remove('active');
+        updateVisuals();
+      };
+
+      document.getElementById('exportSvgBtn').onclick = () => {
+        updateVisuals();
+        const clone = svg.cloneNode(true);
+
+        clone.removeAttribute('height');
+        clone.removeAttribute('width');
+        clone.setAttribute('preserveAspectRatio', 'xMidYMid meet');
+
+        clone.querySelector('#oShape').setAttribute('stroke', controls.textCol.value);
+        clone.querySelector('#vShape').setAttribute('stroke', controls.textCol.value);
+        clone.querySelector('#dotShape').setAttribute('fill', controls.accentCol.value);
+        clone.querySelector('#lineShape').setAttribute('stroke', controls.accentCol.value);
+
+        const style = document.createElementNS('http://www.w3.org/2000/svg', 'style');
+        style.textContent = `
+                @import url('https://fonts.googleapis.com/css2?family=Syncopate:wght@700&display=swap');
+                #logoText { font-family: 'Syncopate', sans-serif; font-weight: 700; text-anchor: middle; }
+            `;
+        clone.insertBefore(style, clone.firstChild);
+
+        if (showText.checked) {
+          const ct = clone.querySelector('#logoText');
+          ct.setAttribute('fill', controls.textCol.value);
+          ct.setAttribute('font-size', controls.size.value);
+        } else {
+          const ct = clone.querySelector('#logoText');
+          if (ct) ct.remove();
+        }
+
+        const serializer = new XMLSerializer();
+        let source = serializer.serializeToString(clone);
+        if (!source.match(/^<svg[^>]+xmlns="http\:\/\/www\.w3\.org\/2000\/svg"/)) {
+          source = source.replace(/^<svg/, '<svg xmlns="http://www.w3.org/2000/svg"');
+        }
+        navigator.clipboard.writeText(source).then(() => alert('Universal Transparent SVG copied!'));
+      };
+
+      document.fonts.ready.then(() => {
+        container.style.opacity = '1';
+        updateVisuals();
+      });
+
+      Object.values(controls).forEach((el) => el.addEventListener('input', updateVisuals));
+      showText.addEventListener('change', updateVisuals);
+
+      document.getElementById('exportBtn').addEventListener('click', () => {
+        const canvas = document.getElementById('exportCanvas');
+        const ctx = canvas.getContext('2d');
+        const outW = parseInt(controls.w.value);
+        const outH = parseInt(controls.h.value);
+        canvas.width = outW;
+        canvas.height = outH;
+
+        ctx.fillStyle = controls.bgCol.value;
+        ctx.fillRect(0, 0, outW, outH);
+
+        const textWasVisible = showText.checked;
+        logoText.style.display = 'none';
+
+        const svgData = new XMLSerializer().serializeToString(svg);
+        const svgBlob = new Blob([svgData], { type: 'image/svg+xml;charset=utf-8' });
+        const url = URL.createObjectURL(svgBlob);
+        const img = new Image();
+
+        img.onload = () => {
+          const vb = svg.viewBox.baseVal;
+          const designRatio = vb.width / vb.height;
+          const targetRatio = outW / outH;
+          let dW = outW,
+            dH = outH;
+          if (designRatio > targetRatio) dH = outW / designRatio;
+          else dW = outH * designRatio;
+
+          const offsetX = (outW - dW) / 2;
+          const offsetY = (outH - dH) / 2;
+          ctx.drawImage(img, offsetX, offsetY, dW, dH);
+
+          if (textWasVisible) {
+            const scale = dW / vb.width;
+            const fontSize = parseInt(controls.size.value) * scale;
+            ctx.font = `700 ${fontSize}px Syncopate`;
+            ctx.fillStyle = controls.textCol.value;
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'top';
+            ctx.fillText('OUTCOME VAULT', 230 * scale + offsetX, 246 * scale + offsetY);
+            logoText.style.display = 'block';
+          }
+          const link = document.createElement('a');
+          link.download = `logo_${outW}x${outH}.png`;
+          link.href = canvas.toDataURL('image/png');
+          link.click();
+          URL.revokeObjectURL(url);
+        };
+        img.src = url;
+      });
+    </script>
+  </body>
+</html>

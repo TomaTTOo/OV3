@@ -1,0 +1,47 @@
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--ov-space-2) var(--ov-space-5);
+  font-size: var(--ov-font-size-small);
+}
+
+.centred {
+  justify-content: center;
+}
+
+.key {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ov-space-2);
+}
+
+.mark {
+  width: var(--ov-swatch);
+  height: var(--ov-swatch);
+}
+
+.capacity {
+  background: var(--ov-color-capacity);
+}
+
+.over {
+  background: var(--ov-color-over);
+}
+
+.overText {
+  color: var(--ov-color-over);
+}
+
+.capacityOnLight {
+  background: var(--ov-color-capacity-strong);
+}
+
+.overOnLight {
+  background: var(--ov-color-over-on-light);
+}
+
+.capacityLine {
+  width: var(--ov-space-5);
+  height: 0;
+  border-top: var(--ov-border-width-strong) dashed currentcolor;
+}

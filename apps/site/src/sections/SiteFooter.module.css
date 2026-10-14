@@ -1,0 +1,9 @@
+.footer {
+  padding: var(--ov-space-8) var(--ov-space-page);
+  text-align: center;
+  font-size: var(--ov-font-size-small);
+  color: var(--ov-color-text-faint);
+  display: flex;
+  flex-direction: column;
+  gap: var(--ov-space-1);
+}

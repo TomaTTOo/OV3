@@ -1,0 +1,29 @@
+.title {
+  composes: sectionTitle from '../ui/patterns.module.css';
+}
+
+.steps {
+  composes: columns from '../ui/patterns.module.css';
+  gap: var(--ov-space-9);
+}
+
+.step {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ov-space-4);
+}
+
+.number {
+  font-size: var(--ov-font-size-figure);
+  font-weight: var(--ov-font-weight-light);
+  line-height: 1;
+  color: var(--ov-color-capacity-strong);
+}
+
+.stepTitle {
+  composes: itemTitle from '../ui/patterns.module.css';
+}
+
+.stepText {
+  color: var(--ov-color-text-on-light-muted);
+}

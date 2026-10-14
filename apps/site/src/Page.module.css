@@ -1,0 +1,4 @@
+/* The header sits over the hero, which starts at the top of the page. */
+.top {
+  position: relative;
+}

@@ -1,0 +1,17 @@
+.pilot {
+  composes: centeredStack from '../ui/patterns.module.css';
+  max-width: var(--ov-text-width);
+  margin: 0 auto;
+}
+
+.title {
+  font-size: var(--ov-font-size-statement);
+  font-weight: var(--ov-font-weight-semibold);
+  letter-spacing: var(--ov-letter-spacing-tight);
+  line-height: var(--ov-line-height-heading);
+}
+
+.lead {
+  font-size: var(--ov-font-size-lead);
+  color: var(--ov-color-on-capacity);
+}

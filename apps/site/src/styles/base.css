@@ -1,0 +1,41 @@
+/* Page basics: the document, links and focus. Everything else lives in component modules. */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  background: var(--ov-color-ground);
+}
+
+body {
+  margin: 0;
+  background: var(--ov-color-ground);
+  color: var(--ov-color-text);
+  font-family: var(--ov-font-body);
+  font-size: var(--ov-font-size-body);
+  line-height: var(--ov-line-height-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: var(--ov-color-capacity-text);
+}
+
+a:hover {
+  color: var(--ov-color-capacity-text-hover);
+}
+
+:focus-visible {
+  outline: var(--ov-border-width) solid var(--ov-color-capacity);
+  outline-offset: var(--ov-space-1);
+}
+
+h1,
+h2,
+h3,
+p,
+figure {
+  margin: 0;
+}

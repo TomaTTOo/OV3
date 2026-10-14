@@ -1,0 +1,12 @@
+.statement {
+  font-size: var(--ov-font-size-statement);
+  line-height: var(--ov-line-height-heading);
+  font-weight: var(--ov-font-weight-light);
+  letter-spacing: var(--ov-letter-spacing-tight);
+  color: var(--ov-color-text-strong);
+}
+
+.emphasis {
+  color: var(--ov-color-capacity-text);
+  font-weight: var(--ov-font-weight-semibold);
+}

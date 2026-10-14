@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+    <!-- Premium Rounded Background -->
+    <rect width="512" height="512" rx="110" fill="#FFFFFF"/>
+    <!-- Logo Content -->
+    <g transform="translate(83.5, 182)">
+        <rect x="0" y="0" width="160" height="100" rx="50" fill="none" stroke="#111827" stroke-width="24"/>
+        <path d="M 190 0 L 267.5 100 L 345 0" fill="none" stroke="#111827" stroke-width="24" stroke-linecap="round" stroke-linejoin="round"/>
+        <rect x="332" y="87" width="22" height="22" rx="4" fill="#eac448"/>
+        <!-- Underline -->
+        <line x1="-9" y1="145" x2="354" y2="145" stroke="#eac448" stroke-width="12" stroke-linecap="round"/>
+    </g>
+</svg>

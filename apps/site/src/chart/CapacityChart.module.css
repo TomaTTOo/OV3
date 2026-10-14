@@ -1,0 +1,69 @@
+/* On the light band: blue within capacity, a darker red (readable on light) beyond it. */
+.figure {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ov-space-4);
+  max-width: var(--ov-chart-width);
+  margin: 0 auto;
+  width: 100%;
+}
+
+.title {
+  font-size: var(--ov-font-size-lead);
+  font-weight: var(--ov-font-weight-semibold);
+}
+
+.chart {
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.within {
+  fill: var(--ov-color-capacity-strong);
+}
+
+.over {
+  fill: var(--ov-color-over-on-light);
+}
+
+.capacity,
+.baseline {
+  stroke: var(--ov-color-text-on-light);
+  stroke-width: 2;
+}
+
+.capacity {
+  stroke-dasharray: 6 5;
+}
+
+.baseline {
+  stroke: var(--ov-color-line-light);
+  stroke-width: 1;
+}
+
+.label,
+.load {
+  text-anchor: middle;
+  font-family: var(--ov-font-body);
+}
+
+.label {
+  font-size: var(--ov-font-size-body);
+  font-weight: var(--ov-font-weight-semibold);
+  fill: var(--ov-color-text-on-light);
+}
+
+.overText {
+  fill: var(--ov-color-over-on-light);
+}
+
+.load {
+  font-size: var(--ov-font-size-small);
+  fill: var(--ov-color-text-on-light-muted);
+}
+
+.caption {
+  font-size: var(--ov-font-size-small);
+  color: var(--ov-color-text-on-light-muted);
+}

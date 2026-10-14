@@ -1,0 +1,50 @@
+.columns {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, var(--ov-column-min-wide)), 1fr));
+  gap: var(--ov-space-9);
+  align-items: center;
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ov-space-5);
+}
+
+.title {
+  composes: sectionTitle from '../ui/patterns.module.css';
+}
+
+.over {
+  color: var(--ov-color-over);
+}
+
+.items {
+  composes: plainList from '../ui/patterns.module.css';
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ov-space-1);
+  padding: var(--ov-space-5) 0;
+  border-top: var(--ov-border-width) solid var(--ov-color-line-strong);
+}
+
+.itemTitle {
+  composes: itemTitle from '../ui/patterns.module.css';
+}
+
+.itemText {
+  color: var(--ov-color-text-subtle);
+}
+
+.figure {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ov-space-4);
+}
+
+.cube {
+  height: var(--ov-cube-height);
+}

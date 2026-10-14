@@ -1,0 +1,21 @@
+.figures {
+  composes: columns from '../ui/patterns.module.css';
+  gap: var(--ov-space-8);
+}
+
+.figure {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ov-space-3);
+}
+
+.value {
+  font-size: var(--ov-font-size-figure);
+  font-weight: var(--ov-font-weight-light);
+  line-height: 1;
+  color: var(--ov-color-text-strong);
+}
+
+.text {
+  color: var(--ov-color-text-subtle);
+}

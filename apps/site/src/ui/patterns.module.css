@@ -1,0 +1,34 @@
+/* Layout and type patterns shared by the sections, reused with `composes`. */
+.sectionTitle {
+  font-size: var(--ov-font-size-section);
+  line-height: var(--ov-line-height-heading);
+  font-weight: var(--ov-font-weight-semibold);
+  letter-spacing: var(--ov-letter-spacing-tight);
+  color: var(--ov-heading-color, var(--ov-color-text-strong));
+}
+
+.itemTitle {
+  font-size: var(--ov-font-size-item);
+  font-weight: var(--ov-font-weight-semibold);
+  color: var(--ov-heading-color, var(--ov-color-text-strong));
+}
+
+.plainList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.columns {
+  composes: plainList;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, var(--ov-column-min)), 1fr));
+}
+
+.centeredStack {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--ov-space-6);
+}

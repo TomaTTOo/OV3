@@ -1,0 +1,29 @@
+.title {
+  composes: sectionTitle from '../ui/patterns.module.css';
+}
+
+.grid {
+  composes: columns from '../ui/patterns.module.css';
+  gap: var(--ov-border-width);
+  background: var(--ov-color-line-strong);
+  border: var(--ov-border-width) solid var(--ov-color-line-strong);
+}
+
+.cell {
+  background: var(--ov-color-ground);
+  padding: var(--ov-space-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--ov-space-3);
+}
+
+.cellTitle {
+  font-size: var(--ov-font-size-lead);
+  font-weight: var(--ov-font-weight-semibold);
+  color: var(--ov-color-text-strong);
+}
+
+.cellText {
+  font-size: var(--ov-font-size-body);
+  color: var(--ov-color-text-subtle);
+}
