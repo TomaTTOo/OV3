@@ -77,6 +77,7 @@
   /* Shape and size */
   --ov-radius-pill: 999px;
   --ov-radius-panel: 1.25rem;
+  --ov-radius-field: 0.5rem;
   --ov-border-width: 1px;
   --ov-border-width-strong: 2px;
   --ov-control-min-height: 2.75rem;

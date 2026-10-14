@@ -94,6 +94,20 @@ export const content = {
   contact: {
     title: 'Plan your next PI on real capacity.',
     lead: 'Outcome Vault is looking for a few teams planning their next PI or quarter in Jira. Pilot teams use it free and shape what it becomes.',
+    form: {
+      labels: { name: 'Your name', email: 'Work email', company: 'Company (optional)', message: 'Message' },
+      problems: {
+        required: 'Please fill this in.',
+        invalid: 'Please write a valid email address.',
+        tooLong: (max: number) => `Please keep it under ${max} characters.`,
+      },
+      send: 'Send',
+      sending: 'Sending…',
+      sent: 'Thanks. Your message has reached Outcome Vault.',
+      failed: 'It could not be sent. Please try again.',
+      privacy:
+        'Your details are used only to reply to you. They are stored with Google Firebase in the EU and deleted on request.',
+    },
   },
   footer: {
     copyright: (year: number) => `© ${year} Outcome Vault`,

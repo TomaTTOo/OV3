@@ -1,0 +1,89 @@
+/* On the blue band: white fields with dark text; problems in words, never colour alone. */
+.form {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, var(--ov-column-min-narrow)), 1fr));
+  gap: var(--ov-space-5);
+  width: 100%;
+  text-align: left;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ov-space-1);
+}
+
+.wide {
+  grid-column: 1 / -1;
+}
+
+.label {
+  font-size: var(--ov-font-size-small);
+  font-weight: var(--ov-font-weight-semibold);
+  color: var(--ov-color-on-capacity);
+}
+
+.input {
+  min-height: var(--ov-control-min-height);
+  padding: var(--ov-space-2) var(--ov-space-3);
+  border: var(--ov-border-width-strong) solid transparent;
+  border-radius: var(--ov-radius-field);
+  background: var(--ov-color-surface-light);
+  color: var(--ov-color-text-on-light);
+  font: inherit;
+}
+
+.input[aria-invalid='true'] {
+  border-color: var(--ov-color-ground);
+}
+
+.problem {
+  font-size: var(--ov-font-size-small);
+  font-weight: var(--ov-font-weight-semibold);
+  color: var(--ov-color-text-strong);
+}
+
+.privacy {
+  font-size: var(--ov-font-size-small);
+  color: var(--ov-color-on-capacity);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--ov-space-4);
+}
+
+.send {
+  min-height: var(--ov-control-min-height);
+  padding: var(--ov-space-3) var(--ov-space-6);
+  border: 0;
+  border-radius: var(--ov-radius-pill);
+  background: var(--ov-color-ground);
+  color: var(--ov-color-text-strong);
+  font: inherit;
+  font-weight: var(--ov-font-weight-semibold);
+  cursor: pointer;
+}
+
+.send:disabled {
+  cursor: progress;
+  opacity: 0.7;
+}
+
+.sent {
+  font-size: var(--ov-font-size-lead);
+  font-weight: var(--ov-font-weight-semibold);
+}
+
+/* The trap for bots: in the page, but never shown or reachable. */
+.trap {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  border: 0;
+  padding: 0;
+}

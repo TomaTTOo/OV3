@@ -34,6 +34,7 @@ Planning and delivery analytics for Jira: plans made against real capacity, hone
   - The Forge app joins as `apps/jira` when its first feature starts.
 - `pnpm check`: type check, lint, formatting, duplicate check, tests (all must pass). `pnpm build`: `check`, then every app's build.
 - Site: `pnpm --filter @ov/site dev` (live preview), `pnpm --filter @ov/site preview` (the built static page).
+- `pnpm test:rules`: the Firestore rules tests on the emulator (needs Java). `pnpm deploy:rules`: publish `firestore.rules` to the project (after any change to them).
 - `pnpm deploy:site`: build, then publish the site to Firebase Hosting (project and site `outcome-vault`, outcomevault.com). Needs the Firebase CLI signed in (`pnpm exec firebase login --reauth` when it says the credentials expired). Deploy only when the owner asks.
 
 ## Rules (few, and enforced by the build where possible)

@@ -88,7 +88,7 @@ The marketing site (`apps/site`) follows § 1 (principles), § 3's meaning of co
 - Sections in this order: the hero (the header over it), the statement, planning today (with the overload cube), how it works (with the chart), numbers you can defend, contact, the footer.
 - **Section titles state the reader's job** (what they need to get done: "See which sprints are over capacity before the quarter starts"), not a feature or a claim about the product.
 - Each section a full-width band, its content centred at the text width (`--ov-content-width`) or, for two columns, the wide one; generous space (`--ov-space-section`) above and below.
-- **One action across the site: "Contact us"**, in the contact section. The header carries only the logo and wordmark; the hero's one button leads to how it works. Links shaped as pills: light on dark, dark on blue.
+- **One action across the site: the contact form**, at the end of the page. The header carries only the logo; the hero's one button leads to how it works. Links shaped as pills, light on the dark ground.
 
 ### The particle cube
 
@@ -115,6 +115,14 @@ The marketing site (`apps/site`) follows § 1 (principles), § 3's meaning of co
 - One static page, prerendered at build so search engines and link previews read it without JavaScript; its title, description and preview tags come from the same content.
 - **Every word in one file** (`apps/site/src/content.ts`); components only lay it out.
 - **The product speaks, not a person:** no names, no "we"; results are the method's, described by scale and sector, never by client name.
+
+### The contact form
+
+- Name, work email, company (optional), message; labels above the fields, each problem said in words under its field once the field is left (or on send), never colour alone.
+- Sending stores the message in Firestore (`contactMessages`); the owner reads them in the Firebase console (the free plan sends no notifications). Firebase loads only when someone sends, never with the page.
+- `firestore.rules` lets anyone create a message with exactly these fields and sizes, and nobody read, change or delete one from outside; the limits match the form's (`contact/message.ts`), a test checks them on the emulator.
+- Bots: a hidden field people never see; when it is filled, nothing is sent.
+- A one-line privacy note says what the details are used for, where they are stored and that they are deleted on request.
 
 ### Measurement
 

@@ -14,7 +14,9 @@
     "test": "pnpm -r test",
     "check": "pnpm typecheck && pnpm lint && pnpm format && pnpm dupes && pnpm test",
     "build": "pnpm check && pnpm -r build",
-    "deploy:site": "pnpm build && firebase deploy --only hosting --project default"
+    "deploy:site": "pnpm build && firebase deploy --only hosting --project default",
+    "test:rules": "firebase emulators:exec --only firestore --project demo-ov \"pnpm --filter @ov/site exec vitest run --config vitest.rules.config.ts\"",
+    "deploy:rules": "firebase deploy --only firestore:rules --project default"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
