@@ -3,13 +3,17 @@
 }
 
 .grid {
-  composes: columns from '../ui/patterns.module.css';
+  composes: plainList from '../ui/patterns.module.css';
+  display: flex;
+  flex-wrap: wrap;
   gap: var(--ov-border-width);
   background: var(--ov-color-line-strong);
   border: var(--ov-border-width) solid var(--ov-color-line-strong);
 }
 
 .cell {
+  /* Cells share each row: four in one line on wide screens, never an empty slot. */
+  flex: 1 1 var(--ov-column-min-narrow);
   background: var(--ov-color-ground);
   padding: var(--ov-space-6);
   display: flex;

@@ -28,7 +28,7 @@ export function Planning({ planning }: { planning: Content['planning'] }) {
         </div>
         <figure className={styles.figure}>
           <div className={styles.cube}>
-            <ParticleCube mode="overload" side={11} zoom={1.1} />
+            <ParticleCube mode="overload" side={11} zoom={1.45} />
           </div>
           <figcaption>
             <Legend

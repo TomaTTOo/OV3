@@ -43,10 +43,3 @@
   font-weight: var(--ov-font-weight-light);
   color: var(--ov-color-text-muted);
 }
-
-.actions {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: var(--ov-space-3);
-}

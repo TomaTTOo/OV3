@@ -1,7 +1,6 @@
 /** Every word on the site, in one place. Components only lay it out. */
 
 export type Item = { title: string; text: string };
-export type Figure = { value: string; text: string };
 export type SprintLoad = { name: string; planned: number; capacity: number; likelihood: number };
 
 export const content = {
@@ -13,17 +12,16 @@ export const content = {
   },
   brand: 'Outcome Vault',
   logo: '/brand/logo-dark.svg',
-  pilotCta: 'Join the pilot',
   hero: {
     eyebrow: 'For delivery leads, RTEs and PMOs planning in Jira',
     title: 'From scattered history to a plan you can trust.',
-    lead: 'Outcome Vault reads what your teams really finished in Jira and shows, as you plan, whether each sprint fits and how likely it is to be delivered.',
-    secondaryCta: 'How it works',
+    lead: 'For your next PI or quarterly planning, Outcome Vault reads what your teams really finished in Jira and shows, as you plan, whether each sprint fits and how likely it is to be delivered.',
+    cta: 'How it works',
   },
   statement: { plain: 'Status reports are performance.', emphasis: "Plans shouldn't be." },
   planning: {
     label: 'Planning today',
-    title: { before: 'Most plans are ', over: 'over capacity', after: ' before the quarter starts.' },
+    title: { before: 'See which sprints are ', over: 'over capacity', after: ' before the quarter starts.' },
     items: [
       {
         title: 'Copied by hand',
@@ -41,7 +39,7 @@ export const content = {
     legend: { capacity: 'Capacity, from finished work', over: 'Committed beyond capacity' },
   },
   how: {
-    title: 'Three steps, inside Jira.',
+    title: 'Plan every sprint on the capacity your team really has.',
     steps: [
       {
         title: 'Bring in the backlog',
@@ -74,7 +72,7 @@ export const content = {
     },
   },
   trust: {
-    title: 'Numbers you can defend.',
+    title: 'Commit to numbers you can defend.',
     items: [
       {
         title: 'Ranges, not promises',
@@ -94,29 +92,15 @@ export const content = {
       },
     ] satisfies Item[],
   },
-  proof: {
-    label: 'The method behind it, already proven',
-    figures: [
-      {
-        value: '95%',
-        text: 'delivery predictability across 12 teams and more than 150 engineers, with percentile-based forecasting.',
-      },
-      {
-        value: '~95%',
-        text: 'commitment reliability in a 100-person commercial transformation, run on key results.',
-      },
-      { value: '200+', text: 'people across Latin America steered from key results to delivery.' },
-    ] satisfies Figure[],
-  },
-  pilot: {
-    title: 'Plan your next quarter on real capacity.',
-    lead: 'Outcome Vault is looking for a few teams planning their next quarter in Jira. Pilot teams use it free and shape what it becomes.',
-    button: 'Email to join the pilot',
+  contact: {
+    title: 'Plan your next PI on real capacity.',
+    lead: 'Outcome Vault is looking for a few teams planning their next PI or quarter in Jira. Pilot teams use it free and shape what it becomes.',
+    button: 'Contact us',
     email: 'marcos@corsol.com.br',
-    subject: 'Outcome Vault pilot',
+    subject: 'Outcome Vault',
   },
   footer: {
-    copyright: '© 2026 Outcome Vault',
+    copyright: (year: number) => `© ${year} Outcome Vault`,
     trademark:
       'Jira and Atlassian are trademarks of Atlassian. Outcome Vault is not affiliated with Atlassian.',
   },

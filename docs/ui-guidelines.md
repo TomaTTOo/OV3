@@ -73,7 +73,7 @@ The marketing site (`apps/site`) follows § 1 (principles), § 3's meaning of co
 
 ### Colour
 
-- A near-black ground, Atlassian's dark-mode text greys, one light band ("How it works") and one blue band (the pilot). All values come from Atlassian's palette, so Jira screenshots sit well on the site.
+- A near-black ground, Atlassian's dark-mode text greys, one light band ("How it works") and one blue band (contact). All values come from Atlassian's palette, so Jira screenshots sit well on the site.
 - **Blue** is capacity and action. **Red means over capacity, and nothing else:** the red particles, the words "over capacity" in the heading beside them, and their legend. Never decoration.
 - A colour is never the only signal: red text says what it means.
 
@@ -85,15 +85,16 @@ The marketing site (`apps/site`) follows § 1 (principles), § 3's meaning of co
 
 ### Layout
 
-- Sections in this order: the hero (the header over it), the statement, planning today (with the overload cube), how it works, numbers you can defend, the method's results, the pilot, the footer.
+- Sections in this order: the hero (the header over it), the statement, planning today (with the overload cube), how it works (with the chart), numbers you can defend, contact, the footer.
+- **Section titles state the reader's job** (what they need to get done: "See which sprints are over capacity before the quarter starts"), not a feature or a claim about the product.
 - Each section a full-width band, its content centred at the text width (`--ov-content-width`) or, for two columns, the wide one; generous space (`--ov-space-section`) above and below.
-- **One action across the site: "Join the pilot".** Links shaped as pills: light on dark (the main action), outline (secondary), dark on blue (the pilot).
+- **One action across the site: "Contact us"**, in the contact section. The header carries only the logo and wordmark; the hero's one button leads to how it works. Links shaped as pills: light on dark, dark on blue.
 
 ### The particle cube
 
 - One component (`cube/ParticleCube.tsx`), its geometry pure and tested (`cube/geometry.ts`).
-- **Hero, the story** (`sections/heroCube.ts`, its one definition): scattered particles form the blue cube (your history becoming a plan), red ones arrive above it (the overload), all holds, scatters, and starts again.
-- **First paint:** a still of the story's formed moment, drawn at build time from the same geometry (`scripts/stills.ts`), shows at once; the live cube starts from that same moment and fades in over it, so nothing jumps. The same still, at 1200 × 630, is the image link previews show.
+- **Hero** (`sections/heroCube.ts`, its one definition): scattered particles form the blue cube (your history becoming a plan). Blue only: the red belongs to planning today, where it is explained. (A story mode, the red arriving above the formed cube, exists in the component, unused.)
+- **First paint:** a still of the formed cube, drawn at build time from the same geometry (`scripts/stills.ts`), shows at once; the live cube starts from that same moment and fades in over it, so nothing jumps. The same still, at 1200 × 630, is the image link previews show.
 - **Planning today:** the overload cube, with red particles hovering above it, and its legend under it.
 - Decorative: hidden from screen readers. Still for visitors who turn motion off; paused while off screen. Its colours are read from the tokens.
 
@@ -101,7 +102,7 @@ The marketing site (`apps/site`) follows § 1 (principles), § 3's meaning of co
 
 - The line above the headline names the reader (who it's for), not the category.
 - A soft dark halo behind the text keeps it readable over the particles.
-- It reserves the header's height and grows with its content; on narrow screens the header shows the logo without the wordmark.
+- It reserves the header's height and grows with its content.
 
 ### The chart
 

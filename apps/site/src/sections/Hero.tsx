@@ -5,10 +5,10 @@ import { Eyebrow } from '../ui/Eyebrow.tsx';
 import { PillLink } from '../ui/PillLink.tsx';
 import styles from './Hero.module.css';
 
-type Props = { hero: Content['hero']; cta: string; ctaHref: string; howHref: string };
+type Props = { hero: Content['hero']; howHref: string };
 
-/** The opening: the cube telling the story (scattered history, a plan, then the overload) behind what Outcome Vault is. */
-export function Hero({ hero, cta, ctaHref, howHref }: Props) {
+/** The opening: the cube forming from scattered history, behind what Outcome Vault is for. */
+export function Hero({ hero, howHref }: Props) {
   return (
     <section className={styles.hero}>
       <div className={styles.cube}>
@@ -23,14 +23,9 @@ export function Hero({ hero, cta, ctaHref, howHref }: Props) {
         <Eyebrow>{hero.eyebrow}</Eyebrow>
         <h1 className={styles.title}>{hero.title}</h1>
         <p className={styles.lead}>{hero.lead}</p>
-        <div className={styles.actions}>
-          <PillLink href={ctaHref} look="light">
-            {cta}
-          </PillLink>
-          <PillLink href={howHref} look="outline">
-            {hero.secondaryCta}
-          </PillLink>
-        </div>
+        <PillLink href={howHref} look="light">
+          {hero.cta}
+        </PillLink>
       </div>
     </section>
   );

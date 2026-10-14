@@ -1,4 +1,4 @@
-.pilot {
+.contact {
   composes: centeredStack from '../ui/patterns.module.css';
   max-width: var(--ov-text-width);
   margin: 0 auto;

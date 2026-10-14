@@ -82,11 +82,12 @@
   --ov-text-width: 42.5rem;
   --ov-hero-text-width: 56.25rem;
   --ov-column-min: 18.75rem;
+  --ov-column-min-narrow: 14rem;
   --ov-column-min-wide: 32.5rem;
   --ov-chart-width: 46rem;
   --ov-hero-height: 47rem;
   --ov-header-space: 7rem;
-  --ov-cube-height: 38.75rem;
+  --ov-cube-height: 46rem;
   --ov-logo-width: 4.75rem;
   --ov-logo-height: 2.25rem;
   --ov-swatch: 0.625rem;

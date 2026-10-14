@@ -11,18 +11,22 @@ describe('the site', () => {
 
   it('shows every section', () => {
     render(<Page />);
-    for (const title of [content.how.title, content.trust.title, content.pilot.title]) {
+    for (const title of [content.how.title, content.trust.title, content.contact.title]) {
       expect(screen.getByRole('heading', { level: 2, name: title })).toBeInTheDocument();
     }
     expect(screen.getByRole('heading', { level: 2, name: /over capacity/ })).toBeInTheDocument();
   });
 
-  it('leads every "Join the pilot" to the pilot section, and the pilot section to an email', () => {
+  it('offers one way to get in touch', () => {
     render(<Page />);
-    for (const link of screen.getAllByRole('link', { name: content.pilotCta })) {
-      expect(link).toHaveAttribute('href', '#pilot');
-    }
-    expect(screen.getByRole('link', { name: content.pilot.button }).getAttribute('href')).toMatch(/^mailto:/);
+    expect(screen.getByRole('link', { name: content.contact.button }).getAttribute('href')).toMatch(
+      /^mailto:/,
+    );
+  });
+
+  it('shows the current year in the copyright', () => {
+    render(<Page />);
+    expect(screen.getByText(content.footer.copyright(new Date().getFullYear()))).toBeInTheDocument();
   });
 
   it('names what the red means, never colour alone', () => {

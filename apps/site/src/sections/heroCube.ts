@@ -2,9 +2,9 @@ import type { CubeMode } from '../cube/geometry.ts';
 
 /** The hero's cube: its one definition, used by the page and by the still images built from it. */
 export const heroCube = {
-  mode: 'story' as CubeMode,
+  mode: 'form' as CubeMode,
   side: 12,
-  /** Size in the hero; story mode keeps room above the cube for the red. */
+  /** Size in the hero. */
   zoom: 1.45,
   /** Size in the link preview image. */
   previewZoom: 1.15,

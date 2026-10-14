@@ -16,12 +16,6 @@
   color: var(--ov-color-ground);
 }
 
-.outline,
-.outline:hover {
-  border-color: var(--ov-color-line-control);
-  color: var(--ov-color-surface-light);
-}
-
 .dark,
 .dark:hover {
   background: var(--ov-color-ground);

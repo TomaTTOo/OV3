@@ -29,10 +29,3 @@
   white-space: nowrap;
   color: var(--ov-color-surface-light);
 }
-
-/* On narrow screens the logo stands alone, so the action keeps its room. */
-@media (width < 30rem) {
-  .wordmark {
-    display: none;
-  }
-}
