@@ -17,13 +17,6 @@ describe('the site', () => {
     expect(screen.getByRole('heading', { level: 2, name: /over capacity/ })).toBeInTheDocument();
   });
 
-  it('offers one way to get in touch', () => {
-    render(<Page />);
-    expect(screen.getByRole('link', { name: content.contact.button }).getAttribute('href')).toMatch(
-      /^mailto:/,
-    );
-  });
-
   it('shows the current year in the copyright', () => {
     render(<Page />);
     expect(screen.getByText(content.footer.copyright(new Date().getFullYear()))).toBeInTheDocument();

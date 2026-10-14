@@ -94,9 +94,6 @@ export const content = {
   contact: {
     title: 'Plan your next PI on real capacity.',
     lead: 'Outcome Vault is looking for a few teams planning their next PI or quarter in Jira. Pilot teams use it free and shape what it becomes.',
-    button: 'Contact us',
-    email: 'marcos@corsol.com.br',
-    subject: 'Outcome Vault',
   },
   footer: {
     copyright: (year: number) => `© ${year} Outcome Vault`,

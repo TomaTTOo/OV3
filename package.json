@@ -13,12 +13,14 @@
     "dupes": "jscpd apps/site/src apps/site/scripts apps/brand/src packages/design/src packages/design/scripts --min-lines 6 --exit-code 1",
     "test": "pnpm -r test",
     "check": "pnpm typecheck && pnpm lint && pnpm format && pnpm dupes && pnpm test",
-    "build": "pnpm check && pnpm -r build"
+    "build": "pnpm check && pnpm -r build",
+    "deploy:site": "pnpm build && firebase deploy --only hosting --project default"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
     "eslint": "^10.12.0",
     "eslint-plugin-react-hooks": "^7.1.1",
+    "firebase-tools": "15.33.0",
     "jscpd": "^5.4.1",
     "prettier": "^3.9.10",
     "stylelint": "^17.16.0",

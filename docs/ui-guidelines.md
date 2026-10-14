@@ -116,6 +116,10 @@ The marketing site (`apps/site`) follows § 1 (principles), § 3's meaning of co
 - **Every word in one file** (`apps/site/src/content.ts`); components only lay it out.
 - **The product speaks, not a person:** no names, no "we"; results are the method's, described by scale and sector, never by client name.
 
+### Measurement
+
+- Visits are counted with Umami Cloud (`apps/site/src/analytics.ts`): no cookies and no personal data, so no consent banner. Counted only on outcomevault.com, never on previews. No other tracking on the page.
+
 ### Brand
 
 - **One source:** the logo is drawn from its specification (`docs/brand/logo.md`) by `packages/design`, its colours read from the tokens. No logo file is made by hand.

@@ -15,9 +15,3 @@
   background: var(--ov-color-surface-light);
   color: var(--ov-color-ground);
 }
-
-.dark,
-.dark:hover {
-  background: var(--ov-color-ground);
-  color: var(--ov-color-text-strong);
-}
