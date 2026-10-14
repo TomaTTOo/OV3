@@ -37,6 +37,17 @@ describe('the contact form', () => {
     expect(send).toHaveBeenCalledWith(expect.objectContaining({ name: 'Ana', email: 'ana@example.com' }));
   });
 
+  it('sends once, however fast the button is clicked', async () => {
+    const send = vi.fn().mockResolvedValue(undefined);
+    render(<ContactForm copy={copy} send={send} />);
+    fillAll();
+    const button = screen.getByRole('button', { name: copy.send });
+    fireEvent.click(button);
+    fireEvent.click(button);
+    await waitFor(() => expect(screen.getByRole('status')).toBeInTheDocument());
+    expect(send).toHaveBeenCalledTimes(1);
+  });
+
   it('says so when sending fails, keeping what was written', async () => {
     render(<ContactForm copy={copy} send={vi.fn().mockRejectedValue(new Error('offline'))} />);
     fillAll();

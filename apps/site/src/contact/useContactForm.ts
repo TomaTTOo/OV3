@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import {
   emptyContact,
   validate,
@@ -18,6 +18,8 @@ export function useContactForm(send: (values: ContactValues) => Promise<void>) {
   const [shown, setShown] = useState<ReadonlySet<ContactField>>(new Set());
   const [status, setStatus] = useState<Status>('editing');
   const [trap, setTrap] = useState('');
+  /** Set the moment a send starts, so a second click before the screen updates cannot send again. */
+  const busy = useRef(false);
   const all = validate(values);
   const errors: ContactErrors = Object.fromEntries(
     Object.entries(all).filter(([field]) => shown.has(field as ContactField)),
@@ -27,13 +29,15 @@ export function useContactForm(send: (values: ContactValues) => Promise<void>) {
   const leave = (field: ContactField) => setShown((s) => new Set(s).add(field));
   const submit = async () => {
     setShown(new Set(Object.keys(values) as ContactField[]));
-    if (Object.keys(all).length > 0 || status === 'sending') return;
+    if (Object.keys(all).length > 0 || busy.current) return;
     if (trap !== '') return setStatus('sent');
+    busy.current = true;
     setStatus('sending');
     try {
       await send(values);
       setStatus('sent');
     } catch {
+      busy.current = false;
       setStatus('failed');
     }
   };
