@@ -1,130 +1,110 @@
-# **Logo**
+# The Outcome Vault logo
 
-## **1\. Composition and Layout**
+The specification every logo file is drawn from. `packages/design/src/logo.ts` builds the variants from it; nothing here is drawn by hand. All measures are in **units** of the logo's design space (the mark sits in a space 460 units wide); a file scales them to its size.
 
-The logo is a vertically stacked composition consisting of three primary tiers:
+## 1. Composition
 
-- **Tier 1 (Main Glyph):** The "OV" monogram.
-- **Tier 2 (Separator):** A thin horizontal accent line.
-- **Tier 3 (Wordmark):** The brand name "OUTCOME VAULT" in wide-set typography.
+The logo has three tiers:
 
-The entire layout is governed by a **460x320 coordinate system** (ViewBox). When the wordmark is removed, the monogram tier re-centers vertically within the viewport.
+1. **The monogram:** "OV", an open O and V, with a gold accent dot.
+2. **The underline:** a thin gold line under the monogram.
+3. **The wordmark:** "OUTCOME VAULT" in wide capitals.
 
----
+It comes in four layouts:
 
-## **2\. Geometry and Shape Style**
+| Layout         | Tiers                                      | Used for                                                   |
+| -------------- | ------------------------------------------ | ---------------------------------------------------------- |
+| **Stacked**    | monogram, underline, wordmark below        | square spaces: the LinkedIn page logo, documents           |
+| **Horizontal** | monogram and underline, wordmark beside it | wide spaces: the website header, the LinkedIn cover, email |
+| **Mark**       | monogram and underline                     | where the name is already written next to it               |
+| **Icon**       | monogram only, heavier, on a rounded tile  | small sizes: favicons, phone and app icons                 |
 
-### **The "O" Glyph**
+## 2. Geometry
 
-- **Form:** A horizontal capsule (rounded rectangle).
-- **Dimensions:** **160 units (W) x 100 units (H)**.
-- **Corner Radius:** **50 units** (creating perfectly semi-circular ends).
-- **Stroke Weight:** **18 units**, centered on the path.
-- **Fill:** None.
+### The O
 
-### **The "V" Glyph**
+- A horizontal capsule: **160 × 100**, its top-left corner at **(55, 65)**.
+- Corner radius **50**, so both ends are perfect half-circles.
+- Outline only: a stroke of **18**, centred on the path. The hole inside is **124** wide (160 − 18 − 18), balancing line and space.
 
-- **Form:** An open-top, two-point diagonal path.
-- **Construction:** Starts at the top left, descends to a centered bottom vertex, and ascends to the top right.
-- **Angles:** Symmetrical isosceles dip.
-- **Stroke Weight:** **18 units**.
-- **Terminals:** **Rounded caps** (stroke-linecap: round) and a **rounded joint** (stroke-linejoin: round).
+### The V
 
-### **The Accent Dot**
+- An open V: from **(245, 65)** down to **(322.5, 165)** and up to **(400, 65)**, a symmetric dip.
+- Stroke **18**, with rounded ends and a rounded corner.
 
-- **Form:** A small rounded square.
-- **Dimensions:** **22 x 22 units**.
-- **Corner Radius:** **4 units** (softened corners).
-- **Position:** Mathematically aligned to the **bottom-right visual extremity** of the "V". It accounts for the 9-unit stroke expansion of the "V" to sit flush with the letterform's outer boundary.
+### The accent dot
 
-### **The Underline (Separator)**
+- A gold square **22 × 22**, corners rounded at **4**, at **(387, 152)**.
+- It sits flush with the V's lower-right outer edge (the stroke's 9-unit half-width included): the full stop after "OV".
 
-- **Form:** A horizontal vector line.
-- **Stroke Weight:** **6 units** (exactly 1/3 the thickness of the main glyphs).
-- **Terminals:** **Rounded caps**.
-- **Horizontal Span:** Aligned to the **visual outer edges** of the "O" and the "V" (spanning approximately 363 units).
+### The underline
 
----
+- A gold line from **(48.5, 210)** to **(411.5, 210)**, **363** long, spanning the outer edges of the O and the V.
+- Stroke **6** (one third of the monogram's), rounded ends.
 
-## **3\. Spacing and Alignment**
+### The icon's heavier version
 
-The logo utilizes a **Constant Gap ($G$)** of **33 units** to maintain vertical rhythm:
+At favicon sizes an 18 stroke would be about 1 pixel. The icon uses the same O and V paths with:
 
-1. **Upper Gap:** 33 units between the bottom of the OV glyphs and the top of the underline.
-2. **Lower Gap:** 33 units between the bottom of the underline and the top of the "OUTCOME VAULT" text.
-3. **Horizontal Centering:** Both the underline and the wordmark are anchored to the absolute horizontal midpoint (**X \= 230**).
+- a stroke of **28**;
+- a larger dot: **30 × 30**, corners **5**, at **(388, 149)**;
+- no underline;
+- a rounded square tile behind it: corner radius **22%** of its side, the monogram centred with an **18%** margin on each side.
 
----
+## 3. Spacing
 
-## **4\. Typography**
+- **The gap (G = 33)** is the logo's rhythm: between the monogram and the underline, between the underline and the stacked wordmark, and between the mark and the wordmark in the horizontal lockup.
+- **Stacked:** the wordmark's letters start 33 below the underline, centred on the monogram (x = 230).
+- **Horizontal:** the wordmark starts 33 to the right of the mark's outer edge (x = 447.5), its letters centred on the O's middle (y = 115).
 
-- **Brand Text:** "OUTCOME VAULT"
-- **Case:** **All Caps** (Force Uppercase).
-- **Font Family:** **Syncopate** (specifically the **Bold/700** weight).
-- **Font Style:** A modern, ultra-wide sans-serif with extended horizontal proportions.
-- **Font Size:** Default **32px** (adjustable via controls).
-- **Baseline:** The text uses a **hanging baseline** for its vertical coordinate to ensure the 33-unit gap is measured from the top of the letter height.
+## 4. Typography
 
----
+- **Typeface:** Syncopate, **Bold (700)**: a modern, ultra-wide sans serif.
+- **Case:** all capitals, as written: OUTCOME VAULT.
+- **Spacing between letters:** the typeface's own; none added.
+- **Drawn as shapes, never as text:** the letters are converted once from the font into outlines (`packages/design/scripts/wordmark.ts`), so a logo file never depends on the font being installed or loaded.
+- **Size, stacked:** a font size of **32**: letters **21.5** tall, the word **369** wide, matching the underline's span almost exactly.
+- **Size, horizontal:** letters **40** tall (two fifths of the O's height), the word **687** wide.
+- **Measured from the top of the letters**, so the 33 gap is the same visible space in every layout.
+- Syncopate is for the wordmark only. The website's text is set in Sora.
 
-## **5\. Color Palette**
+## 5. Colour
 
 The colours live in the design tokens (`packages/design/src/tokens.css`), their one source:
 
-- **Light version:** graphite marks (`--ov-color-brand-ink`) on white (`--ov-color-brand-paper`).
-- **Dark version:** white marks on the website's near-black ground (`--ov-color-ground`).
-- **Accent (dot and underline), both versions:** gold (`--ov-color-brand-accent`).
+| Version   | Background                       | Monogram and wordmark             | Dot and underline                |
+| --------- | -------------------------------- | --------------------------------- | -------------------------------- |
+| **Light** | white (`--ov-color-brand-paper`) | graphite (`--ov-color-brand-ink`) | gold (`--ov-color-brand-accent`) |
+| **Dark**  | near-black (`--ov-color-ground`) | white (`--ov-color-brand-paper`)  | gold (`--ov-color-brand-accent`) |
 
-The original navy (#111827) was replaced by graphite to match the website.
+The original navy (#111827) was replaced by graphite to match the website. On the website, gold appears only in the logo: blue and red keep their meanings on the page.
 
----
+## 6. Clear space
 
-## **6\. Built from this specification**
+- Keep empty space around the logo equal to the **O's height (100)** on all four sides before any other element. In the stacked version it is measured from the bottom of the wordmark.
+- Exports for other channels (LinkedIn, email) keep it; the website header is the one exception, where the page's own margins provide it.
+- The logo generator can draw this zone as a dashed guide.
 
-`packages/design/src/logo.ts` draws every variant from the coordinates below: **mark**, **stacked**, **horizontal** (the wordmark beside the mark, its letters two-fifths of the O's height, 33 units away) and **icon** (the mark without the underline, heavier strokes and a larger dot, on a rounded tile, for favicons). The wordmark is drawn as shapes from Syncopate Bold (`scripts/wordmark.ts`), never as live text. The files themselves come from presets: the website builds its own; the logo generator (`apps/brand`) exports the rest.
+## 7. Contrast and rendering
 
----
+| Pair                | Contrast | Note                                                       |
+| ------------------- | -------- | ---------------------------------------------------------- |
+| Graphite on white   | 16.2 : 1 | well above WCAG AAA                                        |
+| White on near-black | 19.5 : 1 | well above WCAG AAA                                        |
+| Gold on near-black  | 11.6 : 1 | strong                                                     |
+| Gold on white       | 1.7 : 1  | faint: the accent reads as a highlight, not as information |
 
-## **6\. Technical Reconstruction Data (SVG Specs)**
+Logos are exempt from WCAG's contrast rules, and the gold carries no meaning of its own, so the light version is acceptable. If the dot and underline look too faint on white in practice, a darker gold for the light version is the fix (a token change; every file follows).
 
-To recreate this logo with 100% fidelity, use the following stroke and path properties:
+Rendering: shapes only, no text and no outside resources, so a file looks the same in every browser, app and image viewer.
 
-- **Monogram Stroke:** 18px, round join/cap.
-- **Separator Stroke:** 6px, round cap.
-- **Text Anchor:** middle (centered at X=230).
-- **ViewBox:** 0 0 460 320 (Full) or 0 30 460 218 (Centered Monogram Only).
+## 8. Design intent
 
-### **7\. Precise Coordinate Map (SVG Path Data)**
+- **Style:** modern, minimal, architectural.
+- **Meaning:** the heavy, even strokes and the wide wordmark convey stability and security (the "vault"); the open shapes, transparency; the dot, a full stop: certainty.
+- **Ready for motion:** being built on a grid, the logo can animate cleanly (the underline drawing out from the centre, the dot dropping into its corner).
 
-For a developer to "hard-code" the shapes without seeing the source, these coordinates are the DNA of the logo:
+## 9. Where the files come from
 
-- **O-Capsule:** Top-left origin at $(55, 65)$.
-- **V-Vector:** Path M 245 65 L 322.5 165 L 400 65. The vertex $(322.5, 165)$ is the lowest mathematical point before stroke expansion.
-- **Accent Dot:** Anchor at $(387, 152)$.
-- **Underline:** From $(48.5, 210)$ to $(401.5, 210)$.
-- **Text Anchor:** Midpoint $X$ at $230$.
-
-### **8\. Visual Weight and Optical Balances**
-
-- **Stroke-to-Negative Space Ratio:** The internal "counter" (the hole inside the **O**) has a width of **124 units** ($160 \- 18 \- 18$), creating a balanced relationship between the thickness of the line and the empty space it encloses.
-- **Stroke Scaling:** The stroke weights (18, 6, and 32px font) follow a **divisible ratio of 3**, ensuring that as the logo scales, the relative "boldness" of the elements feels harmonious rather than random.
-
-### **9\. Clear Space Guidelines (Safe Zone)**
-
-To maintain the logo's integrity, a "Safe Zone" should be defined:
-
-- **Minimum Margin:** A padding equal to the height of the **O** (100 units) should be maintained on all four sides of the logo before any other page elements or text are introduced.
-- **Text Padding:** When the wordmark is active, the safe zone extends from the bottom of the "OUTCOME VAULT" text rather than the underline.
-
-### **10\. Design Intent and "Vibe"**
-
-Describing the _intent_ helps a human designer understand how to treat the logo in different contexts:
-
-- **Style:** Modern Minimalist / Architectural.
-- **Connotation:** The wide **Syncopate** font and the heavy-duty stroke weights are intended to convey **stability, security, and transparency** (the "Vault" aspect).
-- **Motion Capability:** Because it is built on a grid, the logo is "motion-ready." For example, the underline could draw in from the center, or the **O** and **V** could fade in as the dot "drops" into its corner position.
-
-### **11\. Accessibility and Rendering**
-
-- **Contrast Ratio:** The \#111827 Navy against \#FFFFFF White provides a contrast ratio of **18.4:1**, exceeding WCAG AAA standards for visual accessibility.
-- **SVG Rendering:** The use of shape-rendering: geometricPrecision is recommended in the SVG tag to ensure that the diagonal lines of the "V" do not appear jagged on low-resolution screens.
+- **The website** builds its own at every build: the horizontal logo for the header, the favicon (SVG and 32 px), the phone home-screen icon (180 px) and the app icon (512 px).
+- **Every other file** (LinkedIn logo and cover, email signature, anything new) is exported from the logo generator (`apps/brand`, `pnpm --filter @ov/brand dev`). Its presets are the same list (`packages/design/src/presets.ts`); a new use gets a preset there first.
