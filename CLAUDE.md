@@ -1,11 +1,21 @@
 # Outcome Vault (OV3)
 
-Planning and delivery analytics for Jira: plans made against real capacity, honest forecasts, and value tracking for delivery leaders. Successor of OV2 (`../OV2`, reference only: read its metric definitions, never port its architecture). Why OV3 exists and what was decided: `docs/context.md`.
+Planning and delivery analytics for Jira: plans made against real capacity, honest forecasts, and value tracking for delivery leaders. Successor of OV2 (`../OV2`, reference only: read its metric definitions, never port its architecture).
+
+**Docs, each the one owner of its subject** (point to them, never restate them):
+
+- `docs/context.md`: why OV3 exists, every product and business decision, **where it stands and the next actions**;
+- `docs/ui-guidelines.md`: every rule about screens (§ 1–7 the Jira app, § 8 the website's Signal theme);
+- `docs/how-we-build.md`: the concepts behind the rules here, in plain words;
+- `docs/brand/logo.md`: the logo's specification.
+
+A fresh session starts with `/startup`.
 
 ## Scope
 
 - **Jira only**, as a commercial proof of concept. No ServiceNow, no web version of the app, no "later integration" code until a paying customer asks for it. The marketing site (`apps/site`) is the one piece outside Jira.
-- **One feature at a time.** What the MVP is: `docs/context.md` § The MVP.
+- **One feature at a time:** a mini-spec in `docs/features/Fxx-name.md` → the owner approves → contract, tests, code → demo → the owner validates → the next. What the MVP is: `docs/context.md` § The MVP.
+- No code outside the approved feature's scope; no speculative packages or abstractions.
 
 ## Architecture: API-first, thin client
 
@@ -22,7 +32,10 @@ Planning and delivery analytics for Jira: plans made against real capacity, hone
 
 ## Stack
 
-- TypeScript, pnpm, React, Zod, MSW, Vitest, Atlassian Forge (Custom UI + resolvers).
+- TypeScript (6.0: the TypeScript linter does not support 7 yet), pnpm, React, Zod, MSW, Vitest, Atlassian Forge (Custom UI + resolvers) for the app (not started).
+- The website: React prerendered to static HTML by Vite; CSS Modules using only the design tokens (Stylelint enforces it); Sora served by the site (Fontsource, never Google Fonts); `zod/mini` for the contact form's schema; Firebase's lite Firestore SDK, loaded only when a message is sent; Umami analytics (cookieless).
+- Firebase project `outcome-vault` (free Spark plan): Hosting (outcomevault.com) and Firestore (`eur3`, contact messages only, `firestore.rules`).
+- Brand tooling: `sharp` renders images at build, `opentype.js` turned the wordmark into shapes once.
 - UI: every rule in `docs/ui-guidelines.md` (follow it for every screen; a new pattern is added there before it is used).
 
 ## Structure and commands
@@ -49,10 +62,20 @@ Planning and delivery analytics for Jira: plans made against real capacity, hone
 4. No silent fallbacks: missing data fails loudly.
 5. Small changes: one endpoint or one screen per session.
 6. Clean code is checked, not promised: strict TypeScript, ESLint, Stylelint (CSS uses only design tokens), Prettier, a cap on function complexity and file size, a duplicate-code check; all block the build.
+7. No configuration values in code: business parameters (percentiles, windows, thresholds, holidays) are settings with their defaults in one place; visual values are design tokens.
 
 ## Working with the owner
 
+- **A partner, not an executor, on every prompt.** Before acting, check whether the request makes sense and what its consequences are; give your advice, suggestions or recommendations first; agree or disagree, and say why. The decision is the owner's (no need to say so in replies). That includes building ahead of demand: the next step is set by what pilots and LinkedIn show (`docs/context.md` § Next actions).
 - The owner (Marcos) designs features, not code; don't ask them to read code. Explain in product terms.
 - The owner's input is the **what**: features, contracts in product terms (what data each screen asks for and gets back), metric definitions and their expected values. Turn contracts into Zod schemas and expected values into golden tests; the **how** follows standard conventions.
-- Be a peer: say when a request is wrong or has a better alternative, before acting.
-- Short answers. Commit only when asked; push only when asked.
+
+- Quality over completion: no workarounds or hacks; if the clean way is blocked, say so instead.
+- Check your own earlier statements too: correct a mistake openly as soon as you spot it.
+- Before re-opening a decided topic, read `docs/context.md`; change a decision there, with its reason, never silently in code.
+- A single source of truth for docs as well as code: a rule or decision is written once, in its owner's file; elsewhere, point to it.
+- UI work is done only once seen: screenshots on desktop and phone (no sideways scroll), with motion and without.
+- Short answers, in plain words; a recommendation, not a survey of options.
+- Commit, push and deploy only when asked. Work on `main` only; no feature branches or extra worktrees.
+- Claude runs local previews and servers for the owner when needed (`pnpm --filter @ov/site dev`, the logo generator).
+- Never print `.env*` files: they hold credentials (the copied `.env.local` has ServiceNow sign-in details).

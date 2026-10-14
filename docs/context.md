@@ -1,4 +1,4 @@
-# Why OV3, and what was decided (2026-10-14)
+# OV3: why, what was decided, where it stands (updated 2026-10-15)
 
 ## The product
 
@@ -25,6 +25,15 @@ The owner's proof: 95% delivery predictability across 12 teams with percentile-b
 ## The website (2026-10-14)
 
 Chosen from nine directions explored on a design canvas: **D6, "Signal"**, a near-black page whose hero shows a cube of particles forming from chaos (scattered Jira history becoming a plan), and a second cube with red particles above it ("over capacity") beside the problems. Red is kept for that one meaning. The site has its own small design system (its look is outside Atlaskit); the Jira app stays Atlaskit-native, and the site's colours come from Atlassian's palette so screenshots sit well on it. Rules: `ui-guidelines.md` § 8.
+
+What was decided while building it (2026-10-15):
+
+- **Live** at outcomevault.com: Firebase Hosting, project `outcome-vault`, free (Spark) plan. One static page, prerendered so search engines and LinkedIn previews read it.
+- **Voice:** the product speaks, never a person (no founder name, no "we"); section titles state the reader's job; PI and quarterly planning named. The owner's own results were removed (they are not Outcome Vault's).
+- **One action: the contact form.** Messages are stored in Firestore (`contactMessages`, EU location `eur3`) and read by hand in the Firebase console: no notification on the free plan (Blaze plus a Cloud Function and an email service would add one). Rules allow only creating a valid message; a hidden trap stops simple bots; no rate limit (App Check if spam appears).
+- **Analytics:** Umami Cloud, cookieless, so no consent banner; counted only on the real domain.
+- **Brand:** the logo is drawn from its specification by `packages/design` (gold accent, graphite instead of the old navy, the wordmark as shapes); the website builds its logo and favicons; every other file (LinkedIn logo 400 × 400, LinkedIn cover 1128 × 191, email signature) comes from the logo generator (`apps/brand`). Specification: `docs/brand/logo.md`.
+- **Still open on the site:** the statement "Status reports are performance. Plans shouldn't be." (ambiguous: "performance" can read as "results"; suggested "A plan is only as good as the capacity behind it", or drop it); the trademark line (kept for now); the "How it works" steps still describe a product not yet designed.
 
 ## The MVP: a planning board with real capacity
 
@@ -56,10 +65,27 @@ OV3's answer: an architecture made of the most common patterns (API-first, thin 
 
 ## The plan
 
-1. Before code: talk to 10 people from the owner's network (delivery leads, PMO, agile coaches); start LinkedIn posts on predictability and OKRs (also helps the owner's job search).
+1. Before code: talk to 10 people from the owner's network (delivery leads, PMO, agile coaches); start LinkedIn posts on predictability and OKRs (also helps the owner's job search). The website is ready for this (live, with the contact form).
 2. Then the MVP (§ The MVP) as a Forge app, built API-first. Weeks, not months.
 3. Success decided in advance, e.g. 3 pilots from the network, or a set number of trials in 3 months. If not reached, stop without regret.
 4. Later, only if it sells: more tools, Rovo actions or MCP over the same API (agents as a second face, not the product), then ServiceNow.
+
+## Where it stands (2026-10-15)
+
+- **Done:** the project's foundation (workspace, checks, docs); the website, live with its contact form and analytics; the brand system (design tokens, logo package, logo generator).
+- **Not started:** the LinkedIn page or group; the 10 conversations; the MVP (the Jira app, `apps/jira`). No product code exists yet, deliberately: demand first.
+
+## Next actions
+
+1. **LinkedIn:** create the Outcome Vault page (logo and cover from the logo generator's presets) and test ideas there (posts on predictability, story-point misuse, planning against real capacity). Watch the website's visits by source in Umami and the messages in Firestore.
+2. **The 10 conversations**, Pernod Ricard first (what planning tools they tried, why they fell short).
+3. **Close the site's open content items** (see § The website).
+4. **Only with a signal from 1 or 2:** the MVP's mini-spec (§ The MVP), then the Jira app, API-first.
+
+## Challenges ahead
+
+- **Commercial:** demand is unproven; enterprise buying is slow (admins, budget, procurement); the planning space is crowded, so the edge must be planning against measured probabilities and data health; the first buyer is a new CIO, CTO or PMO head, or a transformation office, not whoever approved past decisions; pricing and pilot terms are undecided (what pilots get afterwards, what they are asked to give).
+- **Technical (when the MVP starts):** real-time editing by many people during a planning event (what Forge supports is unchecked); writing to Jira needs write access that admins scrutinize ("Apply to Jira" shows changes first); test data from the Public Jira Dataset (licence to check); keeping the AI developer on standard patterns (OV2's failure): small changes, contract first, checks in the build.
 
 ## Test data without a real Jira team
 
