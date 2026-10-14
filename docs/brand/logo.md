@@ -69,11 +69,19 @@ The logo utilizes a **Constant Gap ($G$)** of **33 units** to maintain vertical 
 
 ## **5\. Color Palette**
 
-The logo uses a high-contrast, professional palette:
+The colours live in the design tokens (`packages/design/src/tokens.css`), their one source:
 
-- **Primary Text/Glyphs:** **\#111827** (a deep, near-black Navy).
-- **Accent/Separator:** **\#EAC448** (a muted, sophisticated Gold).
-- **Background:** **\#FFFFFF** (Pure White) by default, though the system supports any Hex-defined background.
+- **Light version:** graphite marks (`--ov-color-brand-ink`) on white (`--ov-color-brand-paper`).
+- **Dark version:** white marks on the website's near-black ground (`--ov-color-ground`).
+- **Accent (dot and underline), both versions:** gold (`--ov-color-brand-accent`).
+
+The original navy (#111827) was replaced by graphite to match the website.
+
+---
+
+## **6\. Built from this specification**
+
+`packages/design/src/logo.ts` draws every variant from the coordinates below: **mark**, **stacked**, **horizontal** (the wordmark beside the mark, its letters two-fifths of the O's height, 33 units away) and **icon** (the mark without the underline, heavier strokes and a larger dot, on a rounded tile, for favicons). The wordmark is drawn as shapes from Syncopate Bold (`scripts/wordmark.ts`), never as live text. The files themselves come from presets: the website builds its own; the logo generator (`apps/brand`) exports the rest.
 
 ---
 

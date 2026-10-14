@@ -1,0 +1,32 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--ov-color-surface);
+  color: var(--ov-color-text);
+  font-family: var(--ov-font-body);
+  font-size: var(--ov-font-size-small);
+  line-height: var(--ov-line-height-body);
+}
+
+h1,
+h2,
+p,
+fieldset {
+  margin: 0;
+}
+
+select,
+input[type='number'] {
+  min-height: var(--ov-control-min-height);
+  padding: 0 var(--ov-space-3);
+  border: var(--ov-border-width) solid var(--ov-color-line-control);
+  border-radius: var(--ov-radius-panel);
+  background: var(--ov-color-surface);
+  color: var(--ov-color-text-strong);
+  font: inherit;
+}

@@ -8,9 +8,9 @@
   },
   "scripts": {
     "typecheck": "pnpm -r typecheck",
-    "lint": "eslint . && stylelint \"apps/**/*.css\"",
+    "lint": "eslint . && stylelint \"apps/**/*.css\" \"packages/**/*.css\"",
     "format": "prettier --check .",
-    "dupes": "jscpd apps/site/src apps/site/scripts --min-lines 6 --exit-code 1",
+    "dupes": "jscpd apps/site/src apps/site/scripts apps/brand/src packages/design/src packages/design/scripts --min-lines 6 --exit-code 1",
     "test": "pnpm -r test",
     "check": "pnpm typecheck && pnpm lint && pnpm format && pnpm dupes && pnpm test",
     "build": "pnpm check && pnpm -r build"

@@ -1,15 +1,11 @@
+import { brandFile } from '../brandFiles.ts';
 import styles from './SiteHeader.module.css';
 
-type Props = { brand: string; logo: string };
-
-/** The bar across the top, over the hero: the logo and wordmark. */
-export function SiteHeader({ brand, logo }: Props) {
+/** The bar across the top, over the hero: the logo (mark and wordmark, one image). */
+export function SiteHeader({ brand }: { brand: string }) {
   return (
     <header className={styles.header}>
-      <span className={styles.brand}>
-        <img src={logo} alt="" className={styles.logo} />
-        <span className={styles.wordmark}>{brand}</span>
-      </span>
+      <img src={brandFile('site-header')} alt={brand} className={styles.logo} />
     </header>
   );
 }

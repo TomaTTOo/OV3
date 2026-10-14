@@ -4,6 +4,7 @@
  * Colours are read from tokens.css, their one source.
  */
 import { mkdir, readFile } from 'node:fs/promises';
+import { createRequire } from 'node:module';
 import sharp from 'sharp';
 import { stillFrame, type CubeMode } from '../src/cube/geometry.ts';
 import { heroCube as hero } from '../src/sections/heroCube.ts';
@@ -11,7 +12,7 @@ import { heroCube as hero } from '../src/sections/heroCube.ts';
 const publicDir = new URL('../public/', import.meta.url);
 /** A public path such as /generated/preview.png, as a file under public/. */
 const file = (path: string) => new URL(path.replace(/^\//, ''), publicDir).pathname;
-const tokens = await readFile(new URL('../src/styles/tokens.css', import.meta.url), 'utf8');
+const tokens = await readFile(createRequire(import.meta.url).resolve('@ov/design/tokens.css'), 'utf8');
 
 function color(name: string): string {
   const match = new RegExp(`--${name}:\\s*(#[0-9a-f]{6})`, 'i').exec(tokens);

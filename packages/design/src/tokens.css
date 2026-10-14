@@ -1,6 +1,6 @@
 /*
- * The website's design tokens: every visual value, defined once (docs/ui-guidelines.md § 8).
- * Components use only these variables; Stylelint refuses raw values.
+ * Outcome Vault's design tokens: every visual value of the website and the brand, defined once (docs/ui-guidelines.md § 8).
+ * The site's CSS uses only these variables (Stylelint refuses raw values); the logo builder reads its colours from here.
  * Colours are Atlassian's dark-mode palette, so the site sits well beside Jira screenshots.
  */
 :root {
@@ -30,11 +30,15 @@
   --ov-color-on-capacity: #e9f2ff;
   --ov-color-over: #f87168;
   --ov-color-over-on-light: #c9372c;
+
+  /* Brand: the logo's colours (light version: ink on paper; dark: white on the ground) and its one accent */
+  --ov-color-brand-accent: #eac448;
+  --ov-color-brand-ink: var(--ov-color-text-on-light);
+  --ov-color-brand-paper: var(--ov-color-text-strong);
   --ov-color-halo: color-mix(in srgb, var(--ov-color-ground) 72%, transparent);
 
   /* Type */
   --ov-font-body: 'Sora', system-ui, sans-serif;
-  --ov-font-wordmark: 'Syncopate', sans-serif;
   --ov-font-size-label: 0.8125rem;
   --ov-font-size-small: 0.875rem;
   --ov-font-size-body: 1.125rem;
@@ -54,7 +58,6 @@
   --ov-line-height-body: 1.6;
   --ov-letter-spacing-tight: -0.02em;
   --ov-letter-spacing-display: -0.03em;
-  --ov-letter-spacing-wordmark: 0.08em;
   --ov-letter-spacing-label: 0.24em;
 
   /* Space */
@@ -88,7 +91,6 @@
   --ov-hero-height: 47rem;
   --ov-header-space: 7rem;
   --ov-cube-height: 46rem;
-  --ov-logo-width: 4.75rem;
   --ov-logo-height: 2.25rem;
   --ov-swatch: 0.625rem;
 

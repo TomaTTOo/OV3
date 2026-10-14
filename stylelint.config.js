@@ -1,5 +1,5 @@
 /**
- * The website's CSS may use only its design tokens (apps/site/src/styles/tokens.css, the one place raw values live).
+ * The website's CSS may use only its design tokens (packages/design/src/tokens.css, the one place raw values live).
  * docs/ui-guidelines.md § 8.
  */
 export default {
@@ -51,7 +51,7 @@ export default {
   },
   overrides: [
     {
-      files: ['apps/site/src/styles/tokens.css'],
+      files: ['packages/design/src/tokens.css'],
       rules: { 'scale-unlimited/declaration-strict-value': null },
     },
   ],

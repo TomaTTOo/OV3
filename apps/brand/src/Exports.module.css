@@ -1,0 +1,22 @@
+.exports {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--ov-space-3);
+}
+
+.button {
+  min-height: var(--ov-control-min-height);
+  padding: 0 var(--ov-space-5);
+  border: 0;
+  border-radius: var(--ov-radius-pill);
+  background: var(--ov-color-surface-light);
+  color: var(--ov-color-text-on-light);
+  font: inherit;
+  font-weight: var(--ov-font-weight-semibold);
+  cursor: pointer;
+}
+
+.problem {
+  color: var(--ov-color-over);
+}

@@ -3,16 +3,17 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "node scripts/stills.ts && vite",
+    "dev": "node scripts/stills.ts && node scripts/brand.ts && vite",
     "typecheck": "tsc -p tsconfig.json",
     "test": "vitest run",
-    "build": "node scripts/stills.ts && vite build && vite build --ssr src/entry-server.tsx --outDir dist-ssr && node scripts/prerender.ts",
+    "build": "node scripts/stills.ts && node scripts/brand.ts && vite build && vite build --ssr src/entry-server.tsx --outDir dist-ssr && node scripts/prerender.ts",
     "preview": "pnpm build && vite preview --outDir dist",
-    "stills": "node scripts/stills.ts"
+    "stills": "node scripts/stills.ts",
+    "brand": "node scripts/brand.ts"
   },
   "dependencies": {
     "@fontsource/sora": "^5.3.0",
-    "@fontsource/syncopate": "^5.3.0",
+    "@ov/design": "workspace:*",
     "react": "^19.3.1",
     "react-dom": "^19.3.1"
   },

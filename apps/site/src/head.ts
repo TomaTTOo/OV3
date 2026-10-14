@@ -1,5 +1,6 @@
 import { content } from './content.ts';
 import { heroCube } from './sections/heroCube.ts';
+import { brandFile } from './brandFiles.ts';
 
 const escape = (text: string) =>
   text.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
@@ -21,5 +22,8 @@ export function headTags(): string {
     `<meta property="og:image:height" content="${heroCube.previewSize.height}" />`,
     `<meta name="twitter:card" content="summary_large_image" />`,
     `<link rel="preload" as="image" href="${heroCube.poster}" />`,
+    `<link rel="icon" type="image/svg+xml" href="${brandFile('favicon')}" />`,
+    `<link rel="icon" type="image/png" sizes="32x32" href="${brandFile('favicon-32')}" />`,
+    `<link rel="apple-touch-icon" href="${brandFile('apple-touch')}" />`,
   ].join('\n    ');
 }

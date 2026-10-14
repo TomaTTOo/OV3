@@ -1,8 +1,7 @@
 import '@fontsource/sora/300.css';
 import '@fontsource/sora/400.css';
 import '@fontsource/sora/600.css';
-import '@fontsource/syncopate/700.css';
-import './styles/tokens.css';
+import '@ov/design/tokens.css';
 import './styles/base.css';
 import { StrictMode } from 'react';
 import { createRoot, hydrateRoot } from 'react-dom/client';

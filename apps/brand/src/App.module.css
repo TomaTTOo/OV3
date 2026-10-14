@@ -1,0 +1,38 @@
+.app {
+  max-width: var(--ov-content-width-wide);
+  margin: 0 auto;
+  padding: var(--ov-space-6) var(--ov-space-page);
+  display: flex;
+  flex-direction: column;
+  gap: var(--ov-space-6);
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ov-space-1);
+}
+
+.title {
+  font-size: var(--ov-font-size-title);
+  font-weight: var(--ov-font-weight-semibold);
+  color: var(--ov-color-text-strong);
+}
+
+.note {
+  color: var(--ov-color-text-subtle);
+}
+
+.columns {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, var(--ov-column-min)), 1fr));
+  gap: var(--ov-space-6);
+  align-items: start;
+}
+
+.stage {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ov-space-5);
+  grid-column: span 2;
+}

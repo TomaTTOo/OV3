@@ -9,23 +9,8 @@
   padding: var(--ov-space-6) var(--ov-space-page);
 }
 
-.brand {
-  display: flex;
-  align-items: center;
-  gap: var(--ov-space-3);
-}
-
 .logo {
-  width: var(--ov-logo-width);
+  display: block;
   height: var(--ov-logo-height);
-}
-
-.wordmark {
-  font-family: var(--ov-font-wordmark);
-  font-weight: var(--ov-font-weight-bold);
-  font-size: var(--ov-font-size-small);
-  letter-spacing: var(--ov-letter-spacing-wordmark);
-  text-transform: uppercase;
-  white-space: nowrap;
-  color: var(--ov-color-surface-light);
+  width: auto;
 }

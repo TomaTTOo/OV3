@@ -18,7 +18,7 @@ export function Page() {
   return (
     <>
       <div className={styles.top}>
-        <SiteHeader brand={content.brand} logo={content.logo} />
+        <SiteHeader brand={content.brand} />
         <main>
           <Hero hero={content.hero} howHref={`#${ids.how}`} />
           <Statement statement={content.statement} />

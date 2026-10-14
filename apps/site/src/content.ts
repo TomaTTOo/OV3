@@ -11,7 +11,6 @@ export const content = {
     url: 'https://outcomevault.com/',
   },
   brand: 'Outcome Vault',
-  logo: '/brand/logo-dark.svg',
   hero: {
     eyebrow: 'For delivery leads, RTEs and PMOs planning in Jira',
     title: 'From scattered history to a plan you can trust.',

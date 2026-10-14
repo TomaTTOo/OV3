@@ -1,0 +1,64 @@
+.controls {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ov-space-5);
+  padding: var(--ov-space-5);
+  background: var(--ov-color-ground);
+  border: var(--ov-border-width) solid var(--ov-color-line-strong);
+  border-radius: var(--ov-radius-panel);
+}
+
+.field,
+.group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ov-space-2);
+  border: 0;
+  padding: 0;
+  margin: 0;
+}
+
+.label {
+  composes: eyebrow from '@ov/design/type.module.css';
+  padding: 0;
+}
+
+.inline {
+  display: flex;
+  align-items: center;
+  gap: var(--ov-space-2);
+}
+
+.segments {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--ov-space-1);
+}
+
+.segment {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--ov-control-min-height);
+  padding: 0 var(--ov-space-4);
+  border: var(--ov-border-width) solid var(--ov-color-line-control);
+  border-radius: var(--ov-radius-pill);
+  cursor: pointer;
+}
+
+.segment input {
+  position: absolute;
+  opacity: 0;
+}
+
+.segment:focus-within {
+  outline: var(--ov-border-width-strong) solid var(--ov-color-capacity);
+}
+
+.chosen {
+  background: var(--ov-color-surface-light);
+  color: var(--ov-color-text-on-light);
+}
+
+.warning {
+  color: var(--ov-color-over);
+}

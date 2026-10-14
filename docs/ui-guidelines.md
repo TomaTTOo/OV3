@@ -67,7 +67,7 @@ The marketing site (`apps/site`) follows § 1 (principles), § 3's meaning of co
 
 ### Tokens and styling
 
-- **Every visual value is a token** in `apps/site/src/styles/tokens.css` (`--ov-*`), the one place raw values live. Components style themselves with CSS Modules using only those variables; Stylelint refuses raw colours, sizes, spacing and fonts.
+- **Every visual value is a token** in `packages/design/src/tokens.css` (`--ov-*`), the one place raw values live. Components style themselves with CSS Modules using only those variables; Stylelint refuses raw colours, sizes, spacing and fonts.
 - **Shared patterns are composed, not copied:** section titles, item titles, plain lists, column grids and centred stacks live in `ui/patterns.module.css`, reused with `composes`.
 - No inline `style`, no global classes besides `styles/base.css` (page basics).
 
@@ -118,4 +118,7 @@ The marketing site (`apps/site`) follows § 1 (principles), § 3's meaning of co
 
 ### Brand
 
-- The header shows the logo (`public/brand/logo-dark.svg`) beside the wordmark. The logo's specification and source files: `docs/brand/` (to be revised).
+- **One source:** the logo is drawn from its specification (`docs/brand/logo.md`) by `packages/design`, its colours read from the tokens. No logo file is made by hand.
+- **The website's files are built with it:** the horizontal logo in the header (one image: mark and wordmark), the favicon (SVG, 32 px), the phone home-screen icon (180 px) and the app icon (512 px).
+- **Every other file** (LinkedIn logo and cover, email signature, anything new) is exported from the logo generator (`apps/brand`), whose presets are the same list.
+- The gold appears only in the logo: on the page, blue and red keep their meanings.

@@ -1,0 +1,7 @@
+/* Type patterns shared by every Outcome Vault surface, reused with `composes`. */
+.eyebrow {
+  font-size: var(--ov-font-size-label);
+  letter-spacing: var(--ov-letter-spacing-label);
+  text-transform: uppercase;
+  color: var(--ov-color-text-subtle);
+}

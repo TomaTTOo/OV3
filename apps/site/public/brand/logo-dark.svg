@@ -1,6 +1,0 @@
-<svg id="logoSvg" xmlns="http://www.w3.org/2000/svg" viewBox="0 30 460 218" preserveAspectRatio="xMidYMid meet">
-    <rect id="oShape" x="55" y="65" width="160" height="100" rx="50" fill="none" stroke="#ffffff" stroke-width="18"/>
-    <path id="vShape" d="M 245 65 L 322.5 165 L 400 65" fill="none" stroke="#ffffff" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/>
-    <rect id="dotShape" x="387" y="152" width="22" height="22" rx="4" fill="#eac448"/>
-    <line id="lineShape" x1="48.5" y1="210" x2="411.5" y2="210" stroke="#eac448" stroke-width="6" stroke-linecap="round"/>
-</svg>
