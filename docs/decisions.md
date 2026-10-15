@@ -102,3 +102,9 @@ Each decision with its date, its reason and what was rejected, so it isn't reope
 - **Why:** Claude Code reads files whole by default; one long file means either reading everything or fragile section searches. OV2's drift came from context filled with material competing with the rules.
 - **Markdown, not a data format:** the docs are reasoning (decisions, trade-offs, why); settings and their defaults live in code (`CLAUDE.md`, rule 7).
 - **Rejected:** one `context.md` with every section (about 770 lines); TOON or JSON for docs.
+
+## The website's Firebase key stays in the code, restricted (2026-10-15)
+
+- **The key is public by design:** the contact form needs it in every visitor's browser, so it ships on outcomevault.com whatever the repo holds. GitHub's secret scan flagged it; that alert is a false positive.
+- **What protects it:** `firestore.rules` (only creating a valid message) and the key's restrictions in the Google Cloud console: the three site addresses only, the Cloud Firestore API only. Tested with a live message.
+- **Rejected:** rewriting the git history (force push, and the key stays readable on the live site); moving it to `.env` (it still ships in the bundle, and deploys need one more file); a server function to hide it (needs the paid Blaze plan). App Check only if spam appears.

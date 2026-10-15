@@ -41,6 +41,7 @@ Rewritten at the end of every working session: what was done, where it stopped, 
 
 - **Date:** 2026-10-15 (a product and business session in chat, no code).
 - **Done:** competitive and market research; positioning, audience, jobs to be done; decisions (board over predictability, two apps, inside Jira only, OV brand not a person, build before demand with a stop rule); the MVP draft (team = Jira board, grouping and plannable issue types, one sprint length per PI, breakout and global views, three permission levels, unplanned allowance, manual holidays and days off as team totals, range estimates for new teams); privacy, platform risk, tax; the docs split into these files.
+- **Also done (code):** the logo generator is again one self-contained file, `docs/brand/logo-generator.html`, built from `apps/brand`; the website's Firebase key restricted and tested (`docs/decisions.md`).
 - **Stopped at:** the planning-cycle journey. The owner is to tell the story of one real PI planning (preparation, the event, the days after, what went wrong); Claude drafts the journey as tables, then the MVP is checked against it.
 - **Open questions:**
   - Does the training PI come before dependencies after the MVP? (Default: dependencies first, unless coaches show strong interest.)
