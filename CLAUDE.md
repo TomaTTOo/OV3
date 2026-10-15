@@ -43,7 +43,7 @@ A fresh session starts with `/startup`.
 - pnpm workspace:
   - `packages/design`: the design tokens (`tokens.css`) and the brand (the logo built from its specification, export presets, contrast);
   - `apps/site`: the marketing site, one static page prerendered at build;
-  - `apps/brand`: the logo generator, a local tool (`pnpm --filter @ov/brand dev`, port 4190).
+  - `apps/brand`: the logo generator's source. `pnpm --filter @ov/brand build` writes it as one self-contained file, `docs/brand/logo-generator.html`, opened straight from disk (`dev`, port 4190, for live editing).
   - The Forge app joins as `apps/jira` when its first feature starts.
 - `pnpm check`: type check, lint, formatting, duplicate check, tests (all must pass). `pnpm build`: `check`, then every app's build.
 - Site: `pnpm --filter @ov/site dev` (live preview), `pnpm --filter @ov/site preview` (the built static page).

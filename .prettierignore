@@ -1,3 +1,6 @@
 dist
 dist-ssr
 pnpm-lock.yaml
+
+# The logo generator, built as one self-contained file
+docs/brand/logo-generator.html
